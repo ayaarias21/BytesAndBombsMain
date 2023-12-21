@@ -172,7 +172,7 @@ chart = alt.Chart(df).mark_bar().encode(
     color=alt.Color("Month:N", legend=None)
 ).properties(width=600, height=300)
 
-st.altair_chart(chart, use_container_width=True)
+st.write(fig.to_dict())
 
 # Your stacked bar chart (without Plotly Express)
 fig = alt.Chart(data).mark_bar().encode(
