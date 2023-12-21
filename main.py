@@ -1,7 +1,6 @@
 import streamlit as st
 import time
 import pandas as pd
-import plotly.express as px
 import pandas as pd
 #from streamlit_option_menu import option_menu
 import pandas as pd  # read csv, df manipulation
