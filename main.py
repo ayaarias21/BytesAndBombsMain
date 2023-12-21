@@ -191,29 +191,26 @@ st.write("Lastly, in the Ransomware Era from 2013-2020, with estimated damages i
          "foolproof against ransomware attacks.")
 st.write("Below shows the region in which different crimes have been committed the most.")
 
-# Sample data (replace this with your actual data)
-data = {
+# Data
+data_altair = {
     'Region': ['Asia', 'Europe', 'North America', 'Middle East and Africa', 'Latin America'],
     'Server Access': [20, 26, 30, 18, 29],
     'Ransomware': [11, 12, 30, 12, 21],
     'Data Theft': [10, 10, 9, 14, 21],
 }
 
-# Create a stacked bar chart
-fig = px.bar(
-    data,
-    x='Region',
-    y=['Server Access', 'Ransomware', 'Data Theft'],
-    title='Distribution of Cyber Attack Types by Region (2021)',
-    labels={'value': 'Percentage'},
-    height=500,
-)
+df_altair = pd.DataFrame(data_altair)
 
-# Update layout for better visualization
-fig.update_layout(barmode='stack', legend=dict(title_text='Attack Type'))
+# Stacked bar chart with Altair
+chart_altair = alt.Chart(df_altair).mark_bar().encode(
+    x='Region:N',
+    y=alt.Y('value:Q', stack='normalize'),
+    color='Attack Type:N',
+    order=alt.Order('Attack Type:N', sort='ascending')
+).properties(height=500)
 
-# Display the chart using Streamlit
-st.plotly_chart(fig)
+# Display the Altair chart
+st.altair_chart(chart_altair, use_container_width=True)
 
 st.write("Additionally, some other cyber-attacks listed by New Jersey Gov. Including android malware that purposely "
          "targets android mobile devices mobile devices that causes a range of attacks from device disablement to "
