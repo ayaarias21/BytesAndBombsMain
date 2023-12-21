@@ -201,12 +201,16 @@ data_altair = {
 
 df_altair = pd.DataFrame(data_altair)
 
+# Melt the DataFrame to make it tidy for Altair
+df_melted = df_altair.melt('Region', var_name='Attack Type', value_name='Count')
+
 # Stacked bar chart with Altair
-chart_altair = alt.Chart(df_altair).mark_bar().encode(
+chart_altair = alt.Chart(df_melted).mark_bar().encode(
     x='Region:N',
-    y=alt.Y('value:Q', stack='normalize'),
+    y='Count:Q',
     color='Attack Type:N',
-    order=alt.Order('Attack Type:N', sort='ascending')
+    order=alt.Order('Attack Type:N', sort='ascending'),
+    tooltip=['Region:N', 'Count:Q']
 ).properties(height=500)
 
 # Display the Altair chart
