@@ -1,7 +1,7 @@
 import streamlit as st
 import time
 import pandas as pd
-import pandas as pd
+import altair as alt
 #from streamlit_option_menu import option_menu
 import pandas as pd  # read csv, df manipulation
 st.set_page_config(page_title="Bytes and Bombs", page_icon="🚨", layout="centered")
@@ -155,10 +155,14 @@ st.write('The Security Brief, New Zealand article entitled "A brief history of c
          'like CodeRed, Nimda, and Blaster exploited vulnerabilities in operating systems and network infrastructure '
          'as seen in the chart below. ')
 
-import streamlit as st
+# Sample data for the DataFrame
+data = {
+    'Worm': ['Worm1', 'Worm2', 'Worm3', 'Worm4'],
+    'Month': ['Jan', 'Feb', 'Mar', 'Apr'],
+}
 
-# Your existing code...
-
+# Creating a DataFrame
+df = pd.DataFrame(data)
 st.title("Worms of the Early 2000s")
 
 # Your Altair chart
@@ -169,8 +173,6 @@ chart = alt.Chart(df).mark_bar().encode(
 ).properties(width=600, height=300)
 
 st.altair_chart(chart, use_container_width=True)
-
-# Your existing text content...
 
 # Your stacked bar chart (without Plotly Express)
 fig = alt.Chart(data).mark_bar().encode(
