@@ -155,24 +155,20 @@ st.write('The Security Brief, New Zealand article entitled "A brief history of c
          'like CodeRed, Nimda, and Blaster exploited vulnerabilities in operating systems and network infrastructure '
          'as seen in the chart below. ')
 
-# Sample data for the DataFrame
-data = {
-    'Worm': ['Worm1', 'Worm2', 'Worm3', 'Worm4'],
-    'Month': ['Jan', 'Feb', 'Mar', 'Apr'],
-}
+# Sample data for Altair chart
+data_altair = {'Worm': ['Worm1', 'Worm2', 'Worm3', 'Worm4'], 'Month': ['Jan', 'Feb', 'Mar', 'Apr']}
+df_altair = pd.DataFrame(data_altair)
 
-# Creating a DataFrame
-df = pd.DataFrame(data)
-st.title("Worms of the Early 2000s")
-
-# Your Altair chart
-chart = alt.Chart(df).mark_bar().encode(
+# Creating Altair chart
+chart_altair = alt.Chart(df_altair).mark_bar().encode(
     y=alt.Y("Worm:N", title=None, sort='-x'),
     x=alt.X("Month:N", title="Month of Emergence"),
     color=alt.Color("Month:N", legend=None)
 ).properties(width=600, height=300)
 
-st.write(fig.to_dict() if fig else "No chart to display")
+# Display the Altair chart
+st.altair_chart(chart_altair)
+
 
 # Your stacked bar chart (without Plotly Express)
 fig = alt.Chart(data).mark_bar().encode(
