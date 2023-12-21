@@ -1,12 +1,9 @@
 import streamlit as st
 import time
 import pandas as pd
-import seaborn as sns
 import matplotlib.pyplot as plt
 import plotly.express as px
-import streamlit as st
 import pandas as pd
-import altair as alt
 #from streamlit_option_menu import option_menu
 import pandas as pd  # read csv, df manipulation
 st.set_page_config(page_title="Bytes and Bombs", page_icon="🚨", layout="centered")
