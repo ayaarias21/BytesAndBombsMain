@@ -182,7 +182,7 @@ fig = alt.Chart(data).mark_bar().encode(
     column='Attack Type:N'
 ).properties(height=300)
 
-st.altair_chart(fig, use_container_width=True)
+st.write(fig.to_dict())
 
 st.write("Moving on the 2005-2013 era which was entitled the “Monetisation Era”, With the use of malvertising, spam, "
          "botnets, and trojans they terrorists were able to capitalize off this for money and profit instead of for "
