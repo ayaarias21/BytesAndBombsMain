@@ -155,11 +155,15 @@ st.write('The Security Brief, New Zealand article entitled "A brief history of c
          'like CodeRed, Nimda, and Blaster exploited vulnerabilities in operating systems and network infrastructure '
          'as seen in the chart below. ')
 
-# Sample data for Altair chart
-data_altair = {'Worm': ['Worm1', 'Worm2', 'Worm3', 'Worm4'], 'Month': ['Jan', 'Feb', 'Mar', 'Apr']}
+# Data
+data_altair = {
+    "Worm": ["CodeRed", "Code Red II", "Nimda", "SQL Slammer", "Blaster", "Welchia", "Sobig.F", "Sober", "Bagle", "MyDoom", "Netsky", "Sasser"],
+    "Month": ["July 2001", "August 2001", "September 2001", "January 2003", "August 2003", "August 2003", "August 2003", "October 2003", "January 2004", "January 2004", "February 2004", "April 2004"]
+}
+
 df_altair = pd.DataFrame(data_altair)
 
-# Creating Altair chart
+# Chart
 chart_altair = alt.Chart(df_altair).mark_bar().encode(
     y=alt.Y("Worm:N", title=None, sort='-x'),
     x=alt.X("Month:N", title="Month of Emergence"),
@@ -167,18 +171,7 @@ chart_altair = alt.Chart(df_altair).mark_bar().encode(
 ).properties(width=600, height=300)
 
 # Display the Altair chart
-st.altair_chart(chart_altair)
-
-
-# Your stacked bar chart (without Plotly Express)
-fig = alt.Chart(data).mark_bar().encode(
-    x='Region:N',
-    y='value:Q',
-    color='Attack Type:N',
-    column='Attack Type:N'
-).properties(height=300)
-
-st.write(fig.to_dict() if fig else "No chart to display")
+st.altair_chart(chart_altair, use_container_width=True)
 
 
 st.write("Moving on the 2005-2013 era which was entitled the “Monetisation Era”, With the use of malvertising, spam, "
