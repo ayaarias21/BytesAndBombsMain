@@ -172,7 +172,7 @@ chart = alt.Chart(df).mark_bar().encode(
     color=alt.Color("Month:N", legend=None)
 ).properties(width=600, height=300)
 
-st.write(fig.to_dict())
+st.write(fig.to_dict() if fig else "No chart to display")
 
 # Your stacked bar chart (without Plotly Express)
 fig = alt.Chart(data).mark_bar().encode(
@@ -182,7 +182,8 @@ fig = alt.Chart(data).mark_bar().encode(
     column='Attack Type:N'
 ).properties(height=300)
 
-st.write(fig.to_dict())
+st.write(fig.to_dict() if fig else "No chart to display")
+
 
 st.write("Moving on the 2005-2013 era which was entitled the “Monetisation Era”, With the use of malvertising, spam, "
          "botnets, and trojans they terrorists were able to capitalize off this for money and profit instead of for "
